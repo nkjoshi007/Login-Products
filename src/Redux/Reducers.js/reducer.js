@@ -19,6 +19,7 @@ switch (action.type){
             Cart:[...state.Cart,inp_qnty]
         }
     }
+    
     case "Removecart":
     const No_cart1 = state.Cart.findIndex((item)=>item.id===action.payload.id)
         if(state.Cart[No_cart1].qnty>1){
@@ -35,9 +36,10 @@ switch (action.type){
                 }
 
             }   
-            
+            break;
     default:
         return state;
+        
 }
 }
 export default cartreducer;

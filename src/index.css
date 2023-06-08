@@ -20,4 +20,17 @@ code {
 .link{
 text-decoration: none;
 color: aliceblue;
+cursor: pointer;
+}
+.DOB{
+  width: 10rem;
+  border: 1px solid rgb(73, 70, 70);
+  text-align: center;
+  padding: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+.link1{
+  text-decoration: none;
+  color: black;
 }

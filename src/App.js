@@ -5,6 +5,7 @@ import { Contactus } from "./Contactus"
 import { Product } from "./Products"
 import { Home } from "./Home"
 import { Showcart } from "./Showcart"
+import { Login } from "./Login"
 
 export const App =()=>{
   return(
@@ -12,8 +13,9 @@ export const App =()=>{
     <BrowserRouter>
     <Home/>
     <Routes>
-      <Route exact path="/" Component={Signup}/>
-      <Route exact path="/" Component={Signup}/>
+      <Route exact path="/signup" Component={Signup}/>
+      <Route exact path="/signup" Component={Signup}/>
+      <Route exact path="/" Component={Login}/>
       <Route exact path="/Aboutus" Component={Aboutus}/>
       <Route exact path="/Contactus" Component={Contactus}/>
       <Route exact path="/Products" Component={Product}/>
