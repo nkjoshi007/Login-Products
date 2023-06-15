@@ -2,8 +2,8 @@ const Cart_Products={
     Cart:[]
 }
 
-  const cartreducer=(state=Cart_Products,action)=>{
-switch (action.type){
+    const cartreducer=(state=Cart_Products,action)=>{
+    switch (action.type){
     case "Addcart":
     const No_cart = state.Cart.findIndex((item)=>item.id===action.payload.id)
     if(No_cart>=0){
@@ -19,7 +19,6 @@ switch (action.type){
             Cart:[...state.Cart,inp_qnty]
         }
     }
-    
     case "Removecart":
     const No_cart1 = state.Cart.findIndex((item)=>item.id===action.payload.id)
         if(state.Cart[No_cart1].qnty>1){
@@ -42,4 +41,5 @@ switch (action.type){
         
 }
 }
+
 export default cartreducer;

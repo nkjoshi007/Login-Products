@@ -5,6 +5,7 @@ import {TextField} from "@mui/material"
 import {Grid} from "@mui/material"
 import { useFormik } from 'formik';
 import { Signup_validation } from './Schemas';
+import { Link } from 'react-router-dom';
 
 const initialValues={
   fname:"",
@@ -47,7 +48,16 @@ export const Login=()=> {
  {/* <FormControlLabel control={<Button color='primary' variant='contained'>Login</Button>}/> */}
  <Button color='secondary' type='submit' variant='contained'>Login</Button>
 </ButtonGroup>
-
+<Grid xs={12} md={12} item>
+                <p style={{ textAlign: "center" }}>
+                  <strong style={{ marginRight: "3px" }}>
+                    Don't have any account?
+                  </strong>
+                  <Link className="link1" to="/signup">
+                    Sign up
+                  </Link>
+                </p>
+              </Grid>
 {/* <Grid xs={12} md={12} sx={{mt:"2rem"}}>
 <FormControlLabel control={<Checkbox />} label="I agree to fill this form under the terms and conditions apply" />
 </Grid> */}

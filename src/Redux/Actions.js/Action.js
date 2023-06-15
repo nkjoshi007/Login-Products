@@ -10,3 +10,16 @@ export const Remove=(item)=>{
         payload:item
     }
 }
+export const Signup_data=(data)=>{
+    return{
+        type:"signup",
+        payload:data
+    }
+}
+export const Login_data=(username,email)=>{
+    return{
+        type:"login",
+        userName:username,
+        Email:email,
+    }
+}

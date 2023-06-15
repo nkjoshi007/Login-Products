@@ -40,13 +40,13 @@ export const Showcart = () => {
                     />
                     <p className="card-text">{items.description}</p>
                     <p className="card-text text-center">
-                      Price: ₹{items.price}{" "}
+                      Price: ${items.price}{" "}
                       <span className="mx-5">Stock: {items.stock}</span><br/>
                       <span className="mx-5">Quantity: {items.qnty}</span>
                     </p>
   
                     <p>Discount: {items.discountPercentage}%</p>
-                    <p>Total: {items.qnty*items.price}</p>
+                    <p>Total: ${items.qnty*items.price}</p>
   
                     <ButtonGroup sx={{ mx: "auto", mt: "2rem" }}>
                       <FormControlLabel

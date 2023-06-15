@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { Cartfetch } from "./Redux/Cartfetch";
 import { Button, ButtonGroup, FormControlLabel, Grid } from "@mui/material";
-import { Add } from "./Redux/Actions.js/Action";
+import { Add, Remove } from "./Redux/Actions.js/Action";
+import { Link, Outlet } from "react-router-dom";
 
 export const Product = () => {
   const data = useSelector((state) => state.Cart);
@@ -10,7 +11,10 @@ export const Product = () => {
   const send = (e) => {
     console.log(e);
     dispatch(Add(e));
-    
+  };
+  const sendRemove = (e) => {
+    console.log(e);
+    dispatch(Remove(e));
   };
   console.log("hiii", data);
   useEffect(() => {
@@ -18,49 +22,70 @@ export const Product = () => {
   }, [dispatch]);
   return (
     <>
-      <h1 style={{ textAlign: "center", color: "white" }}>
-        Products
-        <hr className="text-light" />
-      </h1>
       <Grid
         container
         spacing={2}
-        sx={{ ml: "5vw", color: "white", width: "93vw" }}
+        sx={{ ml: "5vw",mt:"5vh", color: "white", width: "93vw" }}
         item
       >
         {data.data.map((items) => {
           return (
             <>
               <Grid xs={12} md={6} lg={4} item>
-                <div style={{ width: "10vw" }}>
-                  <h5 className="card-title">{items.title}</h5>
-
+                <div className="product_cart">
+                  <h3 style={{textAlign:"center"}}>{items.title}</h3>
+                  <Link to={`/Products/${items.id}`} className="link">
                   <img
                     src={items.thumbnail}
-                    style={{ height: "250px", width: "250px" }}
+                    style={{ height: "15rem", width: "15rem" }}
                     alt="Internet error"
-                  />
-                  <p className="card-text">{items.description}</p>
-                  <p className="card-text text-center">
-                    Price: ₹{items.price}{" "}
-                    <span className="mx-5">Stock: {items.stock}</span>
+                  />                        </Link>
+                  
+                  <Link to={`/Products/${items.id}`} className="link">
+                  <p>{items.description}</p>
+                        </Link>
+                  <p>
+                    Price: ${items.price}{" "}
                   </p>
+                    <p className="mx-5">Stock: {items.stock}</p>
 
                   <p>Discount: {items.discountPercentage}%</p>
-
-                  <ButtonGroup sx={{ mx: "auto", mt: "2rem" }}>
-                    <FormControlLabel
-                      control={
-                        <Button
-                          color="primary"
-                          variant="contained"
-                          sx={{ width: "10vw" }}
-                          onClick={()=>send(items)}
-                        >
-                          Add to Cart
-                        </Button>
-                      }
-                    />
+                  <ButtonGroup sx={{ ml:"3rem", mt: "2rem" }}>
+                    {(items.qnty>1) ? (<><FormControlLabel
+                    control={
+                      <Button
+                        color="primary"
+                        variant="outlined"
+                        sx={{ width: "10vw" }}
+                        onClick={()=>send(items)}
+                      >
+                        +
+                      </Button>
+                    }
+                  />
+                  <FormControlLabel
+                    control={
+                      <Button
+                        color="secondary"
+                        variant="outlined"
+                        sx={{ width: "10vw" }}
+                        onClick={()=>sendRemove(items)}
+                      >
+                        -
+                      </Button>
+                    }
+                  /></>):(<><FormControlLabel
+                    control={
+                   <Button
+                        color="primary"
+                        variant="contained"
+                        sx={{ width: "10vw" }}
+                        onClick={()=>send(items)}
+                      >
+                        Add to Cart
+                      </Button> 
+                    }
+                  /></>)}
                     <FormControlLabel
                       control={
                         <Button
@@ -68,7 +93,10 @@ export const Product = () => {
                           variant="contained"
                           sx={{ width: "10vw" }}
                         >
+                          <Link to={`/Products/${items.id}`} className="link">
                           Buy Now
+                        </Link>
+                          
                         </Button>
                       }
                     />
@@ -79,6 +107,7 @@ export const Product = () => {
           );
         })}
       </Grid>
+      <Outlet/>
     </>
   );
 };

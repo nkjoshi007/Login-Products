@@ -2,7 +2,7 @@ export const Aboutus=()=>{
     return(
 
     <>
-    <h1>About us</h1>
+    <h1 style={{textAlign:"center"}}>About us</h1>
     </>
     )
 }
